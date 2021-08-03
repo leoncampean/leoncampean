@@ -1,6 +1,6 @@
 // JavaScript source code
 $(document).ready(function () {
-    $("#add").click(function () {
+    $("nameField").click(function () {
         var newcomerName = $("#newcomer").val();
 
 
