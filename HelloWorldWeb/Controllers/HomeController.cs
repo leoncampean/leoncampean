@@ -13,7 +13,6 @@ namespace HelloWorldWeb.Controllers
 	{
 		private readonly ILogger<HomeController> _logger;
         private readonly TeamInfo teamInfo;
-
         public HomeController(ILogger<HomeController> logger)
 		{
 			_logger = logger;
@@ -42,7 +41,6 @@ namespace HelloWorldWeb.Controllers
 		public IActionResult Index()
 		{
 			return View(teamInfo);
-			;
 		}
 
 		public IActionResult Privacy()
