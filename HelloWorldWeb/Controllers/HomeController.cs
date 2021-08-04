@@ -1,21 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using HelloWorldWeb.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-
-namespace HelloWorldWeb.Controllers
+﻿namespace HelloWorldWeb.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using HelloWorldWeb.Models;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+
 	public class HomeController : Controller
 	{
-		private readonly ILogger<HomeController> _logger;
+		private readonly ILogger<HomeController> logger;
         private readonly TeamInfo teamInfo;
         public HomeController(ILogger<HomeController> logger)
 		{
-			_logger = logger;
+			this.logger = logger;
             teamInfo = new TeamInfo
             {
                 Name = "Team3",
