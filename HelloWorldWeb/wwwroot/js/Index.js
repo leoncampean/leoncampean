@@ -7,10 +7,10 @@ $(document).ready(function () {
         $("#teamList").append(`<li>${newcomerName}</li>`);
 
         $.ajax({
-            url: "https://localhost:44392/Home/AddTeamMember",
+            url: "/Home/AddTeamMember",
             method: "POST",
             data: {
-                "NewTeammate": newcomerName
+                teamMember: newcomerName
             },
             success: (result) =>
             {
