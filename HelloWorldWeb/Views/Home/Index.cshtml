@@ -2,31 +2,31 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+
 @section scripts {
     <script type="text/javascript" src="~/js/Index.js"></script>
 }
-@section AditionalStyles {
+
+@section AdditionalStyles {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 }
 
-
 <div class="text-center">
-    <h1 class="display-4">Our team</h1>
-    <ul id="teamList">
+    <h1>Our team</h1>
+    <ul id="teamMembers">
         @for (var i = 0; i < Model.TeamMembers.Count; i++)
         {
             var member = Model.TeamMembers[i];
 
-
-
             <li class="member">
-                <span class="memberName">@member</span>        
-                <span class="delete fa fa-remove></span>        
-                <span class="fa fa-pencil"></span>        
+                <span class="name">@member.Name</span>
+                <span class="delete fa fa-remove" onclick="deleteMember(@member.Id)"></span>
+                <span class="pencil fa fa-pencil"></span>
             </li>
         }
-
     </ul>
-    <input type="text" id="nameField" title="Name">
-    <button class="btn btn-primary" id="createButton" title="Create">Create</button>
+
+    <input type="text" id="nameField" title="Your name" />
+    <button class="btn btn-primary" id="addMembersButton" title="Create" disabled=true>Create</button>
+    <button class="btn btn-primary" id="clearButton" title="Clear">Clear</button>
 </div>

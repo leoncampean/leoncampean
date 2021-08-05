@@ -1,8 +1,5 @@
-﻿using HelloWorldWeb.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using HelloWorldWebApp.Models;
 
 namespace HelloWorldWebApp.Services
 {
@@ -15,26 +12,44 @@ namespace HelloWorldWebApp.Services
             this.teamInfo = new TeamInfo
             {
                 Name = "Team 3",
-                TeamMembers = new List<string>(new string[]
-               {
-                    "Radu",
-                    "Teona",
-                    "Dragos",
-                    "Leon",
-                    "Claudia",
-                    "George",
-               }),
+                TeamMembers = new List<TeamMember>(),
             };
+
+            string[] teamMembersData = new string[]
+           {
+                "Sechei Radu",
+                "Tanase Teona",
+                "Duma Dragos",
+                "Campean Leon",
+                "Naghi Claudia",
+                "Marian George",
+           };
+
+            int i = 0;
+            foreach (string name in teamMembersData)
+            {
+                teamInfo.TeamMembers.Add(new TeamMember(i++, name));
+            }
         }
 
         public TeamInfo GetTeamInfo()
         {
-            return this.teamInfo;
+            return teamInfo;
         }
 
-        public void AddTeamMember(string name)
+        public void RemoveMember(int memberIndex)
         {
-            this.teamInfo.TeamMembers.Add(name);
+            int listIndex = teamInfo.TeamMembers.FindIndex(element => element.Id == memberIndex);
+
+            teamInfo.TeamMembers.RemoveAt(listIndex);
+        }
+
+        public int AddTeamMember(string name)
+        {
+            int newId = teamInfo.TeamMembers.Count;
+            teamInfo.TeamMembers.Add(new TeamMember(newId, name));
+
+            return newId;
         }
     }
 }

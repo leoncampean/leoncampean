@@ -1,10 +1,8 @@
-// JavaScript source code
+// This JS file now uses jQuery. Pls see here: https://jquery.com/
 $(document).ready(function () {
-    $("#createButton").click(function () {
+    // see https://api.jquery.com/click/
+    $("#addMembersButton").click(function () {
         var newcomerName = $("#nameField").val();
-
-
-        $("#teamList").append(`<li>${newcomerName}</li>`);
 
         $.ajax({
             url: "/Home/AddTeamMember",
@@ -12,14 +10,50 @@ $(document).ready(function () {
             data: {
                 teamMember: newcomerName
             },
-            success: (result) =>
-            {
-                $("#teamList").append(`<li>${newcomerName}</li>`);
+            success: function (result) {
+                // Remember string interpolation
+                $("#teamMembers").append(
+                    `<li class="member">
+                        <span class="name" >${newcomerName}</span>
+                        <span class="delete fa fa-remove" onclick="deleteMember(${result})"></span>
+                        <span class="pencil fa fa-pencil" ></span>
+                    </li>`);
+
                 $("#nameField").val("");
+                document.getElementById("addMembersButton").disabled = true;
             }
         })
-
-
-
     })
 });
+
+function deleteMember(index) {
+
+    $.ajax({
+        url: "/Home/RemoveMember",
+        method: "DELETE",
+        data: {
+            memberIndex: index
+        },
+        success: function (result) {
+            location.reload();
+        }
+    })
+}
+
+(function () {
+
+    $('#nameField').on('change textInput input', function () {
+        var inputVal = this.value;
+        if (inputVal != "") {
+            document.getElementById("addMembersButton").disabled = false;
+        } else {
+            document.getElementById("addMembersButton").disabled = true;
+        }
+    });
+}());
+
+(function () {
+    $("#clearButton").click(function () {
+        document.getElementById("nameField").value = "";
+    });
+}());

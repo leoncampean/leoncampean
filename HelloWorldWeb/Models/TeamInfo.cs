@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 
-namespace HelloWorldWeb.Models
+namespace HelloWorldWebApp.Models
 {
     public class TeamInfo
     {
         public string Name { get; set; }
-        public List<string> TeamMembers { get; set; }
+
+        public List<TeamMember> TeamMembers { get; set; }
     }
 }

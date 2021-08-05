@@ -1,16 +1,13 @@
-﻿// <copyright file="HomeController.cs" company="Principal 33">
-// Copyright (c) Principal 33. All rights reserved.
-// </copyright>
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using HelloWorldWeb.Models;
+using HelloWorldWebApp.Models;
+using HelloWorldWebApp.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace HelloWorldWebApp.Controllers
 {
-    using System.Collections.Generic;
-    using System.Diagnostics;
-    using HelloWorldWeb.Models;
-    using HelloWorldWebApp.Services;
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Logging;
-
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> logger;
@@ -23,9 +20,15 @@ namespace HelloWorldWebApp.Controllers
         }
 
         [HttpPost]
-        public void AddTeamMember(string teamMember)
+        public int AddTeamMember(string teamMember)
         {
-            teamService.AddTeamMember(teamMember);
+            return teamService.AddTeamMember(teamMember);
+        }
+
+        [HttpDelete]
+        public void RemoveMember(int memberIndex)
+        {
+            teamService.RemoveMember(memberIndex);
         }
 
         [HttpGet]
