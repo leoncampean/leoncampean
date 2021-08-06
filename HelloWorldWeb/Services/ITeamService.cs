@@ -6,8 +6,12 @@ namespace HelloWorldWebApp.Services
     {
         int AddTeamMember(string name);
 
-        public void RemoveMember(int memberIndex);
+        public void RemoveMember(int memberId);
+
+        public void UpdateMemberName(int memberId, string name);
 
         TeamInfo GetTeamInfo();
+
+        TeamMember GetMemberById(int memberId);
     }
 }

@@ -30,6 +30,11 @@ namespace HelloWorldWebApp.Controllers
         {
             teamService.RemoveMember(memberIndex);
         }
+        
+        public void RenameMember(int id, string name)
+        {
+            
+        }
 
         [HttpGet]
         public int GetCount()

@@ -38,6 +38,28 @@ $(document).ready(function () {
         $('#classmateName').val(currentName);
         $('#editClassmate').modal('show');
     })
+
+    $("#editClassmate").on("click", "#submit", function () {
+        console.log('submit changes to server');
+        var id = 5;
+        var name = "Leon";
+        $.ajax({
+        url: "/Home/RenameMember"
+        method: "POST",
+        data: {
+            "id": id,
+            "name": name,
+        },
+            success: function (result) {
+                consol.log('cessful rename ${ id }');
+               
+        }
+    })
+    })
+
+    $("#editClassmate").on("click", "#cancel", function () {
+        console.log('cancel changes');
+    })
 });
 
 function deleteMember(index) {
