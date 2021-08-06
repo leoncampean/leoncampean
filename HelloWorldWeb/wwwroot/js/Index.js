@@ -13,7 +13,7 @@ $(document).ready(function () {
             success: function (result) {
                 // Remember string interpolation
                 $("#teamMembers").append(
-                    `<li class="member">
+                    `<li class="member" member-id=${result}>
                         <span class="name" >${newcomerName}</span>
                         <span class="delete fa fa-remove" onclick="deleteMember(${result})"></span>
                         <span class="pencil fa fa-pencil"></span>
@@ -27,7 +27,19 @@ $(document).ready(function () {
 
     $('#submit').click(function () {
         const id = $('#editClassmate').attr('member-id');
-        console.log(id);
+        const newName = $('#classmateName').val();
+
+        $.ajax({
+            url: "/Home/UpdateMemberName",
+            method: "POST",
+            data: {
+                memberId: id,
+                name: newName
+            },
+            success: function (result) {
+                location.reload();
+            }
+        })
     });
 
     $("#teamMembers").on("click", ".pencil", function () {
@@ -37,28 +49,6 @@ $(document).ready(function () {
         $('#editClassmate').attr("member-id", id);
         $('#classmateName').val(currentName);
         $('#editClassmate').modal('show');
-    })
-
-    $("#editClassmate").on("click", "#submit", function () {
-        console.log('submit changes to server');
-        var id = 5;
-        var name = "Leon";
-        $.ajax({
-        url: "/Home/RenameMember"
-        method: "POST",
-        data: {
-            "id": id,
-            "name": name,
-        },
-            success: function (result) {
-                consol.log('cessful rename ${ id }');
-               
-        }
-    })
-    })
-
-    $("#editClassmate").on("click", "#cancel", function () {
-        console.log('cancel changes');
     })
 });
 
