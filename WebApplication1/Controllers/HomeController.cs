@@ -1,37 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using HelloWorldWeb.Models;
+using HelloWorldWebApp.Models;
+using HelloWorldWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using WebApplication1.Models;
 
-namespace WebApplication1.Controllers
+namespace HelloWorldWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<HomeController> logger;
+        private readonly ITeamService teamService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ITeamService teamService)
         {
-            _logger = logger;
+            this.logger = logger;
+            this.teamService = teamService;
+        }
+
+        [HttpPost]
+        public int AddTeamMember(string teamMember)
+        {
+            return teamService.AddTeamMember(teamMember);
+        }
+
+        [HttpDelete]
+        public void RemoveMember(int memberIndex)
+        {
+            teamService.RemoveMember(memberIndex);
+        }
+
+        [HttpPost]
+        public void UpdateMemberName(int memberId, string name)
+        {
+            teamService.UpdateMemberName(memberId, name);
+        }
+
+        [HttpGet]
+        public int GetCount()
+        {
+            return teamService.GetTeamInfo().TeamMembers.Count;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return this.View(teamService.GetTeamInfo());
         }
 
         public IActionResult Privacy()
         {
-            return View();
+            return this.View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return this.View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
         }
     }
 }
