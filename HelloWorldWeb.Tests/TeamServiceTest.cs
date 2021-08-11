@@ -48,5 +48,21 @@ namespace HelloWorldWebApp.Tests
             var member = teamService.GetMemberById(1);
             Assert.Equal("UnitTest", member.Name);
         }
+        
+        [Fact]
+        public void checkIdProblem()
+        {
+            //Asume
+            ITeamService teamService = new TeamService();
+            //Act
+            var memeberToBeDeleted = teamService.GetTeamInfo().TeamMembers[teamService.GetTeamInfo().TeamMembers.Count-2];
+            var newName = "Borys";
+            teamService.RemoveMember(memeberToBeDeleted.Id);
+            var id = teamService.AddTeamMember(newName);
+            teamService.RemoveMember(id);
+            //Assert
+            var member = teamService.GetTeamInfo().TeamMembers.Find(element => element.Name == newName);
+            Assert.Null(member);
+        }
     }
 }
