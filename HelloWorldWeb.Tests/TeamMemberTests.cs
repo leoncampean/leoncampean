@@ -15,7 +15,7 @@ namespace HelloWorldWeb.Tests
         public void GettingAge()
         {
             //Asume
-            var newTeamMember = new TeamMember(12,"Leon");
+            var newTeamMember = new TeamMember("Leon");
             newTeamMember.Birthdate = new DateTime(2000, 03, 17);
             //Act
             int age = newTeamMember.GetAge();

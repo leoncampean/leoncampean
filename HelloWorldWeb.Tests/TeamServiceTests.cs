@@ -40,15 +40,15 @@ namespace HelloWorldWebApp.Tests
         {
             // Assume
             ITeamService teamService = new TeamService();
-
+            var targetTeamMember = teamService.GetTeamInfo().TeamMembers[0];
+            var memberId = targetTeamMember.Id;
             // Act
-            teamService.UpdateMemberName(1, "UnitTest");
+            teamService.UpdateMemberName(memberId, "UnitTest");
 
             // Assert
-            var member = teamService.GetMemberById(1);
-            Assert.Equal("UnitTest", member.Name);
+            Assert.Equal("UnitTest", teamService.GetMemberById(memberId).Name);
         }
-        
+
         [Fact]
         public void checkIdProblem()
         {
@@ -63,6 +63,22 @@ namespace HelloWorldWebApp.Tests
             //Assert
             var member = teamService.GetTeamInfo().TeamMembers.Find(element => element.Name == newName);
             Assert.Null(member);
-        }       
+        }
+
+        [Fact]
+        public void GettingAge()
+        {
+            //Asume
+            ITeamService teamService = new TeamService();
+            //Act
+            var memeberToBeDeleted = teamService.GetTeamInfo().TeamMembers[teamService.GetTeamInfo().TeamMembers.Count-2];
+            var newName = "Borys";
+            teamService.RemoveMember(memeberToBeDeleted.Id);
+            var id = teamService.AddTeamMember(newName);
+            teamService.RemoveMember(id);
+            //Assert
+            var member = teamService.GetTeamInfo().TeamMembers.Find(element => element.Name == newName);
+            Assert.Null(member);
+        }
     }
 }

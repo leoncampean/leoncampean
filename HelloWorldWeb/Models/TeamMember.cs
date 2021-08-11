@@ -4,9 +4,11 @@ namespace HelloWorldWebApp.Models
 {
     public class TeamMember
     {
-        public TeamMember(int id, string name)
+        private static int idCounter = 0;
+        public TeamMember(string name)
         {
-            Id = id;
+            Id = idCounter;
+            idCounter++;
             Name = name;
         }
 
