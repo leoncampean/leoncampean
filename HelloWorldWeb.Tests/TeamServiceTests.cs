@@ -5,7 +5,7 @@ using Xunit;
 
 namespace HelloWorldWebApp.Tests
 {
-    public class TeamServiceTest
+    public class TeamServiceTests
     {
         [Fact]
         public void AddTeamMemberToTheTeam()
@@ -63,6 +63,6 @@ namespace HelloWorldWebApp.Tests
             //Assert
             var member = teamService.GetTeamInfo().TeamMembers.Find(element => element.Name == newName);
             Assert.Null(member);
-        }
+        }       
     }
 }
