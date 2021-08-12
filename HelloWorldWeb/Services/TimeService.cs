@@ -5,8 +5,11 @@ using System.Threading.Tasks;
 
 namespace HelloWorldWebApp.Services
 {
-    public interface ITimeService
+    public class TimeService : ITimeService
     {
-        public DateTime GetCurrentDate();
+        public DateTime GetCurrentDate()
+        {
+            return DateTime.Now;
+        }
     }
 }

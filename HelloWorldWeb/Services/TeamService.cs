@@ -6,6 +6,7 @@ namespace HelloWorldWebApp.Services
     public class TeamService : ITeamService
     {
         private readonly TeamInfo teamInfo;
+        private readonly ITimeService timeService;
 
         public TeamService()
         {
@@ -44,7 +45,7 @@ namespace HelloWorldWebApp.Services
 
         public int AddTeamMember(string name)
         {
-            TeamMember teamMember = new TeamMember(name);
+            TeamMember teamMember = new TeamMember(name, timeService);
 
             teamInfo.TeamMembers.Add(teamMember);
 
