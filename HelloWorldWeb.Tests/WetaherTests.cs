@@ -1,5 +1,4 @@
-﻿using HelloWorldWebApp.Controllers;
-using HelloWorldWebApp.Controllers.HelloWorldWebApp.Controllers;
+﻿using HelloWorldWebApp.Controllers.HelloWorldWebApp.Controllers;
 using HelloWorldWebApp.Models;
 using System;
 using System.Collections.Generic;

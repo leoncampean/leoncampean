@@ -1,2 +1,7 @@
 # My first app
-Sample text here
+## How to deplay to Heroku
+Login to Heroku
+```
+heroku login
+```
+
