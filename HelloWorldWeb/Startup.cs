@@ -1,3 +1,4 @@
+using HelloWorldWebApp.Controllers;
 using HelloWorldWebApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +14,7 @@ namespace HelloWorldWebApp
         public Startup(IConfiguration configuration)
         {
             this.Configuration = configuration;
+            var apiKey = configuration["WeatherForecast:ApiKey"];
         }
 
         public IConfiguration Configuration { get; }
@@ -23,6 +25,7 @@ namespace HelloWorldWebApp
             services.AddControllersWithViews();
             services.AddSingleton<ITeamService>(new TeamService());
             services.AddSingleton<ITimeService>(new TimeService());
+            services.AddSingleton<IWeatherControllerSettings, WeatherControllerSettings>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
