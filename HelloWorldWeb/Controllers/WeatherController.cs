@@ -57,9 +57,10 @@ namespace HelloWorldWebApp.Controllers
 
             // GET api/<WeatherController>/5
             [HttpGet("{id}")]
-            public string Get(int id)
+            public DailyWeather Get(int index)
             {
-                return "value";
+                var records = Get();
+                return records.ElementAt(index);
             }
 
             // DELETE api/<WeatherController>/5
