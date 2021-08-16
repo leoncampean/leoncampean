@@ -22,13 +22,13 @@ namespace HelloWorldWebApp.Controllers
             private readonly string latitude;
             private readonly string apiKey;
 
-            private readonly WeatherControllerSettings settings;
+            private readonly IWeatherControllerSettings settings;
 
-            public WeatherController(IConfiguration configurationSettings)
+            public WeatherController(IWeatherControllerSettings configurationSettings)
             {
-                longitude = configurationSettings["WeatherForecast:Longitude"];
-                latitude = configurationSettings["WeatherForecast:Latitude"];
-                apiKey = configurationSettings["WeatherForecast:ApiKey"];
+                longitude = configurationSettings.Longitude;
+                latitude = configurationSettings.Latitude;
+                apiKey = configurationSettings.ApiKey;
             }
 
             public WeatherController()
