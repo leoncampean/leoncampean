@@ -7,19 +7,19 @@ namespace HelloWorldWebApp.Models
     {
         private static int idCounter = 0;
         private readonly ITimeService timeService;
-        public TeamMember(string name, ITeamService timeService)
+        public TeamMember(string name, ITimeService timeService)
         {
             Id = idCounter;
             idCounter++;
             Name = name;
-            this.timeService = (ITimeService)timeService;
-        }
-
-        public TeamMember(string name, ITimeService timeService)
-        {
-            Name = name;
             this.timeService = timeService;
         }
+
+        //public TeamMember(string name, ITimeService timeService)
+        //{
+        //    Name = name;
+        //    this.timeService = timeService;
+        //}
 
         public int Id { get; set; }
 
