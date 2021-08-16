@@ -9,7 +9,8 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["HelloWorldWeb/HelloWorldWeb.csproj", "HelloWorldWeb/"]
 RUN dotnet restore "HelloWorldWeb/HelloWorldWeb.csproj"
-COPY . .
+COPY . ./HelloWorldWebApp
+#COPY ../stylecop.json .
 WORKDIR "/src/HelloWorldWeb"
 RUN dotnet build "HelloWorldWeb.csproj" -c Release -o /app/build
 
