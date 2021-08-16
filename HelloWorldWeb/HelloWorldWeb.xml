@@ -4,5 +4,8 @@
         <name>HelloWorldWeb</name>
     </assembly>
     <members>
+        <member name="T:HelloWorldWebApp.Controllers.HelloWorldWebApp.Controllers.WeatherController">
+            Fetch data from Weather API. <see href="https://openweathermap.org/api"/>
+        </member>
     </members>
 </doc>

@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<DocumentationFile>C:\Projects\p33-helloworld\HelloWorldWebApp\HelloWorldWebApp.xml</DocumentationFile>
+		<DocumentationFile>C:\Project\Hello world\HelloWorldWeb\HelloWorldWeb.xml</DocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
