@@ -14,10 +14,11 @@ namespace HelloWorldWebApp.Tests
             ITeamService teamService = new TeamService();
 
             //Act
+            int initialCount = teamService.GetTeamInfo().TeamMembers.Count;
             teamService.AddTeamMember("George");
 
             //Assert
-            Assert.Equal(7, teamService.GetTeamInfo().TeamMembers.Count);
+            Assert.Equal(initialCount + 1, teamService.GetTeamInfo().TeamMembers.Count);
         }
 
         [Fact]
@@ -52,33 +53,19 @@ namespace HelloWorldWebApp.Tests
         [Fact]
         public void checkIdProblem()
         {
-            //Asume
+            // Assume
             ITeamService teamService = new TeamService();
-            //Act
-            var memeberToBeDeleted = teamService.GetTeamInfo().TeamMembers[teamService.GetTeamInfo().TeamMembers.Count-2];
-            var newName = "Borys";
-            teamService.RemoveMember(memeberToBeDeleted.Id);
-            var id = teamService.AddTeamMember(newName);
+            var id = teamService.GetTeamInfo().TeamMembers[0].Id;
+
+            // Act
             teamService.RemoveMember(id);
-            //Assert
-            var member = teamService.GetTeamInfo().TeamMembers.Find(element => element.Name == newName);
-            Assert.Null(member);
+            int memberId = teamService.AddTeamMember("Test");
+            teamService.RemoveMember(memberId);
+
+            // Assert
+            int lastIndex = teamService.GetTeamInfo().TeamMembers.Count;
+            Assert.NotEqual("Test", teamService.GetTeamInfo().TeamMembers[lastIndex - 1].Name);
         }
 
-        [Fact]
-        public void GettingAge()
-        {
-            //Asume
-            ITeamService teamService = new TeamService();
-            //Act
-            var memeberToBeDeleted = teamService.GetTeamInfo().TeamMembers[teamService.GetTeamInfo().TeamMembers.Count-2];
-            var newName = "Borys";
-            teamService.RemoveMember(memeberToBeDeleted.Id);
-            var id = teamService.AddTeamMember(newName);
-            teamService.RemoveMember(id);
-            //Assert
-            var member = teamService.GetTeamInfo().TeamMembers.Find(element => element.Name == newName);
-            Assert.Null(member);
-        }
     }
 }

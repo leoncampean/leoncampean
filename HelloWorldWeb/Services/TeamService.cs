@@ -45,6 +45,7 @@ namespace HelloWorldWebApp.Services
 
         public int AddTeamMember(string name)
         {
+            //int count = teamInfo.TeamMembers.Count;
             TeamMember teamMember = new TeamMember(name, timeService);
 
             teamInfo.TeamMembers.Add(teamMember);
