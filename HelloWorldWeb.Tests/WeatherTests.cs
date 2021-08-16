@@ -37,12 +37,12 @@ namespace HelloWorldWebApp.Tests
             Assert.Equal(WeatherType.Cloudy, firstDay.Type);
         }
 
-        [Fact]
+        //[Fact]
         private string LoadJSONFromResource()
         {
             var assembly = this.GetType().Assembly;
             var assemblyName = assembly.GetName().Name;
-            string resourceName = $"{ assemblyName}.TestData.ContentFromWeaherAPI.json";
+            string resourceName = $"{ assemblyName}.TestData.ContentFromWeatherAPI.json";
             var resourceStream = assembly.GetManifestResourceStream(resourceName);
             using (var tr = new StreamReader(resourceStream))
             {
