@@ -1,4 +1,8 @@
-﻿using HelloWorldWebApp.Controllers;
+﻿// <copyright file="WeatherControllerSettings.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
+// </copyright>
+
+using HelloWorldWebApp.Controllers;
 using Microsoft.Extensions.Configuration;
 
 namespace HelloWorldWeb

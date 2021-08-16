@@ -1,3 +1,7 @@
+// <copyright file="Startup.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
+// </copyright>
+
 using System;
 using System.IO;
 using System.Reflection;

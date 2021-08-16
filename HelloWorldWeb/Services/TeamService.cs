@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// <copyright file="TeamService.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
+// </copyright>
+
+using System.Collections.Generic;
 using HelloWorldWebApp.Models;
 
 namespace HelloWorldWebApp.Services

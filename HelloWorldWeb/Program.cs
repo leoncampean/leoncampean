@@ -1,3 +1,7 @@
+// <copyright file="Program.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
+// </copyright>
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;

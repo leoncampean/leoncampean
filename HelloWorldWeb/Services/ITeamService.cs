@@ -1,4 +1,8 @@
-﻿using HelloWorldWebApp.Models;
+﻿// <copyright file="ITeamService.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
+// </copyright>
+
+using HelloWorldWebApp.Models;
 
 namespace HelloWorldWebApp.Services
 {

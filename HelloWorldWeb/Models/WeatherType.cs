@@ -1,4 +1,8 @@
-﻿namespace HelloWorldWebApp.Models
+﻿// <copyright file="WeatherType.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
+// </copyright>
+
+namespace HelloWorldWebApp.Models
 {
     public enum WeatherType
     {

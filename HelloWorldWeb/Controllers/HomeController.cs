@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿// <copyright file="HomeController.cs" company="Principal33">
+// Copyright (c) Principal33. All rights reserved.
+// </copyright>
+
+using System.Collections.Generic;
 using System.Diagnostics;
 using HelloWorldWeb.Models;
 using HelloWorldWebApp.Models;
@@ -32,10 +36,9 @@ namespace HelloWorldWebApp.Controllers
         {
             teamService.RemoveMember(memberIndex);
         }
-        
+
         public void RenameMember(int id, string name)
         {
-            
         }
 
         [HttpGet]
