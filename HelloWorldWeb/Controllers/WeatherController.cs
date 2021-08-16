@@ -16,6 +16,7 @@ namespace HelloWorldWebApp.Controllers
 {
     namespace HelloWorldWebApp.Controllers
     {
+        /// Fetch data from Weather API. <see href="https://openweathermap.org/api"/>
         [Route("api/[controller]")]
         [ApiController]
         public class WeatherController : ControllerBase
@@ -60,7 +61,7 @@ namespace HelloWorldWebApp.Controllers
             }
 
             // GET api/<WeatherController>/5
-            [HttpGet("{id}")]
+            [HttpGet("{index}")]
             public DailyWeather Get(int index)
             {
                 var records = Get();
@@ -68,11 +69,6 @@ namespace HelloWorldWebApp.Controllers
             }
 
             // DELETE api/<WeatherController>/5
-            [HttpDelete("{id}")]
-            public void Delete(int id)
-            {
-            }
-
             private WeatherType ConvertToWeatherType(string weatherType)
             {
                 switch (weatherType)
